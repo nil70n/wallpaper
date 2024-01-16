@@ -18,13 +18,13 @@ if [ ! -d .git ]; then
     echo "https://github.com/nil70n/wallpaper/ ?"
     echo ""
     if gum confirm "Do you want to download the repository?" ;then
-        wget --mirror --no-parent -P ~/Downloads/ https://github.com/nil70n/wallpaper/archive/main/
-        zip -F ~/Downloads/wallpaper-main.zip --out ~/Downloads/wallpaper-main-all.zip
-        unzip -o ~/Downloads/wallpaper-main-all.zip -d ~/Downloads/
+        wget -P ~/Downloads/ https://github.com/nil70n/wallpaper/releases/download/1.0.0/wallpaper-main.zip
+        unzip -o ~/Downloads/wallpaper-main.zip -d ~/Downloads/
         if [ ! -d ~/wallpaper/ ]; then
             mkdir ~/wallpaper
         fi
-        cp ~/Downloads/wallpaper-main/* ~/wallpaper/
+        mv ~/Downloads/wallpaper/* ~/wallpaper/
+        rm -rf ~/Downloads/wallpaper
         echo "Wallpapers from the repository installed successfully."
     elif [ $? -eq 130 ]; then
         exit 130
